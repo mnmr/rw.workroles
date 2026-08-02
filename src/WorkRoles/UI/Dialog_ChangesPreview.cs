@@ -175,6 +175,7 @@ namespace WorkRoles.UI
 
         private static bool SamePlan(List<PawnPreview> a, List<PawnPreview> b)
         {
+            if (a == null || b == null) return a == b;
             if (a.Count != b.Count) return false;
             for (int i = 0; i < a.Count; i++)
             {
@@ -312,7 +313,7 @@ namespace WorkRoles.UI
                 bool canApply = includedCount > 0;
                 if (DrawPreviewFooter(inRect, canApply))
                 {
-                    if (SamePlan(entries, rebuild()))
+                    if (SamePlan(entries, rebuild?.Invoke()))
                     {
                         var selected = new HashSet<Pawn>();
                         for (int i = 0; i < entries.Count; i++)
