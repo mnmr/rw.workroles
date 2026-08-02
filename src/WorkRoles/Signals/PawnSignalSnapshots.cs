@@ -14,7 +14,7 @@ namespace WorkRoles.Signals
             var persistentlyBadSkills = new List<string>();
             if (pawn.skills?.skills != null)
                 foreach (SkillRecord skill in pawn.skills.skills)
-                    if (skill != null && !skill.TotallyDisabled)
+                    if (skill != null && skill.def != null && !skill.TotallyDisabled)
                     {
                         enabledSkills.Add(skill.def.defName);
                         // VSE marks the stable vanilla no-passion identity as
